@@ -3,5 +3,5 @@ ports:
     onOpen: open-preview
 tasks:
   - before: cd playground/game
-    init: npm install
-    command: npm start
+    init: npm install serve
+    command: npx serve
