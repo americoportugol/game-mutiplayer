@@ -4,12 +4,17 @@
         <meta charset="UTF-8">
         <style>
             #screen {
-                border: 1px solid #ccc;
+                border: 10px solid #ccc;
+                image-rendering: pixelated;
+                image-rendering: crisp-edges;
+                image-rendering: -moz-crisp-edges;
+                width: 400px;
+                height: 400px;
             }
         </style>
     </head>
     <body>
-        <canvas id="screen height="10px" width="10px"></canvas>
+        <canvas id="screen" height="10px" width="10px"></canvas>
 
         <script>
             const screen = document.getElementById('screen')
@@ -17,7 +22,7 @@
 
             const game = {
                 players: {
-                    'player1': { x:1, y:3},
+                    'player1': { x:1, y:1},
                     'player2': { x:9, y:9}
                 },
                 fruits: {
@@ -25,7 +30,11 @@
                 }
             }
 
+            RenderScreen()
+
             function RenderScreen() {
+                context.clearRect(0,0,10,10)
+                
                 for (playerId in game.players) {
                     const player = game.players[playerId]
                     context.fillStyle = 'black'
@@ -37,10 +46,8 @@
                     context.fillRect(fruit.x, fruit.y, 1, 1)
                 }
 
-                RequestAnimationFrame(RenderScreen)
-            };
-            RenderScreen()
-
+                requestAnimationFrame(RenderScreen)
+            }
             
         </script>
     </body>
